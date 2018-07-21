@@ -1,4 +1,3 @@
-#最终生成文件请用等宽字体阅览
 with open('report.txt','r') as f:
     L0 = f.readlines()
 L1 = [i.split() for i in L0[:] if i != 0]
@@ -35,15 +34,15 @@ L0 = ''
 for i in L2:
     for n in i:
         #检查是否是汉字,折腾了好久(T-T)
+        m = 8
         if u'\u4e00' <= u'%s'%(str(n)) <= u'\u9fcb':
-            m = (8-len(str(n))*2)/2
-            L0 += '{0}{1}{0}'.format(' '*int(m),n)
-        else:
-            L0 += '{0:^8}'.format(str(n))
+            m = 8-len(str(n))
+        L0 += '{0:^{1}}'.format(str(n),m)
     L0 += '\n'
 
 with open('report0.txt','w') as f:
     f.write(L0)
 print(L0)
+
 
 
